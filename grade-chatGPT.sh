@@ -33,7 +33,7 @@ fi
 
 # Run testListExamples and output result
 test_result=$(java -cp ".;../lib/hamcrest-core-1.3.jar;../lib/junit-4.13.2.jar" org.junit.runner.JUnitCore TestListExamples)
-passed=$(grep -oP '(Test run: )[0-9]+' test_result)
+passed=$(grep -o '(Test run: )[0-9]+' test_result)
 failed=$(echo "$test_result" | grep -E "^FAILURES\!\!\!$" -A 100 | grep -E "^[0-9]+\) TestListExamples\.[A-Za-z0-9]+ " | wc -l)
 total=$((passed+failed))
 total=1
